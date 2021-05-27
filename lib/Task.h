@@ -17,8 +17,8 @@ using std::tuple;
 using std::deque;
 
 namespace Task {
-  // Entry, Description, ImagePath
-  typedef tuple<wstring, wstring, wstring> task_t;
+  // Entry, Description, ImagePath, Verified
+  typedef tuple<wstring, wstring, wstring, DWORD> task_t;
 
   vector<task_t> GetTasks();
   void _walk_folders(vector<task_t>&, ITaskFolder*, deque<wstring>&);

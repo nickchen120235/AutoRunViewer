@@ -1,4 +1,7 @@
 #include "Task.h"
+#include "Util.h"
+
+#include <shared/PeSignatureVerifier/PeSignatureVerifier.h>
 
 vector<Task::task_t> Task::GetTasks() {
   vector<task_t> tasks;
@@ -137,6 +140,10 @@ void Task::_walk_tasks(vector<Task::task_t>& tasks, ITaskFolder* folder, deque<w
       } // task->get_Name(&task_name_bstr)
 
     } // task_collection->get_Item(_variant_t(i + 1), &task)
-    tasks.push_back(task_t(task_name, task_desc, task_path));
+    size_t replace_use;
+    while ((replace_use = task_path.find(L"\"")) != wstring::npos) task_path.replace(replace_use, 1, L"");
+    Util::ToFullPath(task_path);
+    DWORD verify = PeSignatureVerifier::CheckFileSignature(task_path);
+    tasks.push_back(task_t(task_name, task_desc, task_path, verify));
   } // for loop
 }

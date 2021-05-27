@@ -82,6 +82,9 @@
     <ClCompile Include="UI\TaskView\TaskView.cpp">
       <Filter>Source Files\view</Filter>
     </ClCompile>
+    <ClCompile Include="lib\Util.cpp">
+      <Filter>Source Files\view</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="UI\DriverView\DriverView.h">
@@ -150,6 +153,9 @@
     </ClInclude>
     <ClInclude Include="shared\PeSignatureVerifier\certificate_info\TimestampCertificateInfo.h">
       <Filter>Header Files\shared\PeSignatureVerifier\certificate_info</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Util.h">
+      <Filter>Header Files\lib</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
