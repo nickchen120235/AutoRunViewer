@@ -19,7 +19,7 @@ namespace Service {
   const DWORD SERVICE_SHA = 32;
   const DWORD SERVICE_INT = 256;
 
-  // Entry, Description, ImagePath, Type
+  // Entry, Description, ImagePath, Verification
   typedef tuple<wstring, wstring, wstring, DWORD> service_t;
   vector<service_t> GetServices();
   vector<service_t> GetDrivers();

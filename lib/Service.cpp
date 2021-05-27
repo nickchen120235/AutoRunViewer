@@ -1,6 +1,8 @@
 #include "Service.h"
-#include "shared/ServiceLib/ServiceController.h" // from https://www.codeproject.com/Articles/1098263/Interact-with-Windows-Services-in-Cplusplus
+#include "Util.h"
 
+#include "shared/ServiceLib/ServiceController.h" // from https://www.codeproject.com/Articles/1098263/Interact-with-Windows-Services-in-Cplusplus
+#include <shared/PeSignatureVerifier/PeSignatureVerifier.h> // from https://github.com/konstantin89/windows-pe-signature-verifying
 #include <iostream>
 #include <optional>
 
@@ -30,10 +32,18 @@ vector<Service::service_t> Service::GetServices() {
         if (impa.find(L"svchost") != wstring::npos) { // get dll from /parameters/servicedll if executed by svchost
           RegKey parameter{ HKEY_LOCAL_MACHINE, Service::ENTRY + L"\\" + s + L"\\parameters" };
           impa = parameter.GetExpandStringValue(L"ServiceDll");
-          Service::EnvConvert(impa);
         }
 
-        ser.push_back(service_t(s, desc, impa, type));
+        // clean string
+        size_t replace_use;
+        while ((replace_use = impa.find(L"\"")) != wstring::npos) impa.replace(replace_use, 1, L"");
+        Util::ToFullPath(impa);
+        if ((replace_use = impa.find(L"/")) != wstring::npos) impa.erase(replace_use-1);
+
+        // verification
+        DWORD verify = PeSignatureVerifier::CheckFileSignature(impa);
+
+        ser.push_back(service_t(s, desc, impa, verify));
       }
 
       handler.Close();
@@ -64,7 +74,10 @@ vector<Service::service_t> Service::GetDrivers() {
         wstring desc = service.GetServiceName();
         wstring impa = handler.GetExpandStringValue(L"ImagePath");
         Service::EnvConvert(impa);
-        drv.push_back(service_t(s, desc, impa, type));
+
+        // verification
+        DWORD verify = PeSignatureVerifier::CheckFileSignature(impa);
+        drv.push_back(service_t(s, desc, impa, verify));
       }
 
       handler.Close();

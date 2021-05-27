@@ -39,6 +39,15 @@
     <Filter Include="Header Files\view">
       <UniqueIdentifier>{7396bf1b-8761-4b82-b978-77cb8f148ecd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\shared\PeSignatureVerifier">
+      <UniqueIdentifier>{3d0eabae-6420-480e-9dea-be231ec88a87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\shared\PeSignatureVerifier\native_api_wrappers">
+      <UniqueIdentifier>{05b79be4-4e36-4277-b9b0-5529f6a36478}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\shared\PeSignatureVerifier\certificate_info">
+      <UniqueIdentifier>{cf7f3efd-25bb-4bec-b28d-31f3c5de9aa2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="AutoRunViewer.qrc">
@@ -120,6 +129,27 @@
     </ClInclude>
     <ClInclude Include="lib\Task.h">
       <Filter>Header Files\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\PeSignatureVerifier.h">
+      <Filter>Header Files\shared\PeSignatureVerifier</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\PeSignatureVerifier\native_api_wrappers\CryptoApiWrapper.h">
+      <Filter>Header Files\shared\PeSignatureVerifier\native_api_wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\PeSignatureVerifier\native_api_wrappers\HashApiWrapper.h">
+      <Filter>Header Files\shared\PeSignatureVerifier\native_api_wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\PeSignatureVerifier\native_api_wrappers\TrustVerifyWrapper.h">
+      <Filter>Header Files\shared\PeSignatureVerifier\native_api_wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\PeSignatureVerifier\certificate_info\CertificateInfoBase.h">
+      <Filter>Header Files\shared\PeSignatureVerifier\certificate_info</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\PeSignatureVerifier\certificate_info\SignerInfo.h">
+      <Filter>Header Files\shared\PeSignatureVerifier\certificate_info</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\PeSignatureVerifier\certificate_info\TimestampCertificateInfo.h">
+      <Filter>Header Files\shared\PeSignatureVerifier\certificate_info</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

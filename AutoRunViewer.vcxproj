@@ -56,21 +56,29 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)shared\PeSignatureVerifier;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)shared\PeSignatureVerifier;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>.\UI;.\UI\ServiceView;.\UI\DriverView;.\UI\TaskView;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(ProjectDir)shared\PeSignatureVerifier\pe-signature-utils-dbg.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>.\UI;.\UI\ServiceView;.\UI\DriverView;.\UI\TaskView;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(ProjectDir)shared\PeSignatureVerifier\pe-signature-utils.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
@@ -101,6 +109,7 @@
   <ItemGroup>
     <ClCompile Include="LIB\Service.cpp" />
     <ClCompile Include="lib\Task.cpp" />
+    <ClCompile Include="lib\Util.cpp" />
     <ClCompile Include="UI\DriverView\DriverView.cpp" />
     <ClCompile Include="UI\ServiceView\ServiceView.cpp" />
     <ClCompile Include="UI\TaskView\TaskView.cpp" />
@@ -119,6 +128,14 @@
   <ItemGroup>
     <ClInclude Include="LIB\Service.h" />
     <ClInclude Include="lib\Task.h" />
+    <ClInclude Include="lib\Util.h" />
+    <ClInclude Include="shared\PeSignatureVerifier.h" />
+    <ClInclude Include="shared\PeSignatureVerifier\certificate_info\CertificateInfoBase.h" />
+    <ClInclude Include="shared\PeSignatureVerifier\certificate_info\SignerInfo.h" />
+    <ClInclude Include="shared\PeSignatureVerifier\certificate_info\TimestampCertificateInfo.h" />
+    <ClInclude Include="shared\PeSignatureVerifier\native_api_wrappers\CryptoApiWrapper.h" />
+    <ClInclude Include="shared\PeSignatureVerifier\native_api_wrappers\HashApiWrapper.h" />
+    <ClInclude Include="shared\PeSignatureVerifier\native_api_wrappers\TrustVerifyWrapper.h" />
     <ClInclude Include="shared\ServiceLib\ServiceConfig.h" />
     <ClInclude Include="shared\ServiceLib\ServiceContants.h" />
     <ClInclude Include="shared\ServiceLib\ServiceController.h" />

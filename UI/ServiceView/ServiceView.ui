@@ -36,6 +36,11 @@
      </column>
      <column>
       <property name="text">
+       <string>Verified</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
        <string>ImagePath</string>
       </property>
      </column>
