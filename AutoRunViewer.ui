@@ -21,8 +21,14 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
+      <widget class="QWidget" name="logonTab">
+       <attribute name="title">
+        <string>Logon</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_5"/>
+      </widget>
       <widget class="QWidget" name="serviceTab">
        <attribute name="title">
         <string>Service</string>
