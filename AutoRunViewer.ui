@@ -47,6 +47,12 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout"/>
       </widget>
+      <widget class="QWidget" name="dllTab">
+       <attribute name="title">
+        <string>KnownDLLs</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_6"/>
+      </widget>
      </widget>
     </item>
    </layout>

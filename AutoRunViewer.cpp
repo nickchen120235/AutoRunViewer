@@ -4,6 +4,7 @@
 #include "UI/ServiceView/ServiceView.h"
 #include "UI/DriverView/DriverView.h"
 #include "UI/TaskView/TaskView.h"
+#include "UI/KnownDLLView/KnownDLLView.h"
 
 AutoRunViewer::AutoRunViewer(QWidget *parent)
     : QMainWindow(parent)
@@ -21,4 +22,7 @@ AutoRunViewer::AutoRunViewer(QWidget *parent)
 
     TaskView* task = new TaskView(ui.taskTab);
     ui.taskTab->layout()->addWidget(task);
+
+    KnownDLLView* dll = new KnownDLLView(ui.dllTab);
+    ui.dllTab->layout()->addWidget(dll);
 }
